@@ -13,11 +13,11 @@
 * 匹配包含该字符串的文件夹与文件
 * 大小写不敏感
 
-![](images/string-1.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/string-1.png)
 
-![](images/string-2.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/string-2.png)
 
-![](images/string-3.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/string-3.png)
 
 ### 文件 : File
 
@@ -26,11 +26,11 @@
 * 使用`*`来代表任何长度的文件名
 * 使用`*`来代表任何长度的文件类型
 
-![](images/file-1.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/file-1.png)
 
-![](images/file-2.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/file-2.png)
 
-![](images/file-3.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/file-3.png)
 
 ### 路径 : Path
 
@@ -38,18 +38,18 @@
 * 每一段路径使用字符的匹配规则匹配
 * 当以`/`或者`\`结尾时, 默认显示该文件夹下全部文件与文件夹
 
-![](images/path-1.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/path-1.png)
 
-![](images/path-2.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/path-2.png)
 
-![](images/path-3.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/path-3.png)
 
 ### 组合 : Combo
 
 * 使用`空格`分割每一条表达式
 * 只要符合其中一条表达式的匹配规则则会显示
 
-![](images/combo-1.png)
+![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/combo-1.png)
 
 # TODO
 
