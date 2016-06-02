@@ -1,0 +1,65 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+
+atom-panel-container > atom-panel {
+    &.left,
+    &.right {
+        .tree-view-search-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 36px;
+            z-index: 1;
+            padding: 5px 8px;
+            border-bottom: 2px solid #060708;
+            overflow: hidden;
+            atom-text-editor {
+                padding: 0 3px;
+            }
+            & + .tree-view-resizer {
+                margin-top: 36px;
+            }
+            &.tree-view-search-bar--searching {
+                & + .tree-view-resizer {
+                    .tree-view .project-root .list-tree {
+                        .list-item {
+                            &,
+                            &::before {
+                                display: none;
+                            }
+                        }
+                        .file {
+                            // &.selected,
+                            &.tree-view-search-bar--is-match {
+                                &,
+                                &::before {
+                                    display: block;
+                                }
+                            }
+                        }
+                        .directory {
+                            &.selected {
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                            &.tree-view-search-bar--has-match {
+                                &::before,
+                                & > .header {
+                                    display: block;
+                                }
+                                & > .header::before {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

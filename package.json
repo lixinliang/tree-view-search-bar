@@ -1,0 +1,29 @@
+{
+  "name": "tree-view-search-bar",
+  "main": "./lib/main",
+  "version": "0.0.0",
+  "description": "I can reavel which files you are looking for by your keywords in tree view.",
+  "keywords": [
+    "tree-view",
+    "finder",
+    "filter",
+    "search"
+  ],
+  "activationCommands": {
+    "atom-workspace": "search-bar:toggle"
+  },
+  "repository": "https://github.com/lixinliang/tree-view-search-bar",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.2.0",
+    "atom-utils": "^0.9.2",
+    "jquery": "^2.2.4",
+    "minimatch": "^3.0.0"
+  },
+  "devDependencies": {
+    "atom-package-reloader": "0.0.2"
+  }
+}
