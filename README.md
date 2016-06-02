@@ -51,6 +51,10 @@
 
 ![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/combo-1.png)
 
+# 注意
+
+* 收拢的文件夹内的文件不会被匹配到
+
 # TODO
 
 * 大小写敏感(Case Sensitivity)
