@@ -4,9 +4,10 @@
 # 使用方法
 > Usage
 
-* `apm install tree-view-search-bar`
+* `apm install tree-view-search-bar` or [https://atom.io/packages/tree-view-search-bar](https://atom.io/packages/tree-view-search-bar)
 * command: `search-bar:toggle`
 * enjoy it ☺️
+* [NOTICE](#notice)
 
 ### 字符 : String
 
@@ -51,9 +52,9 @@
 
 ![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/combo-1.png)
 
-# 注意
+# 注意(notice)
 
-* 收拢的文件夹内的文件不会被匹配到
+* 收拢的文件夹内的文件不会被匹配到(Do not match any files or directories which in the collapse directory)
 
 # TODO
 
