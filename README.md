@@ -52,7 +52,7 @@
 
 ![](https://raw.githubusercontent.com/lixinliang/tree-view-search-bar/master/images/combo-1.png)
 
-# 注意(notice)
+# <a name="notice"></a>注意
 
 * 收拢的文件夹内的文件不会被匹配到(Do not match any files or directories which in the collapse directory)
 
