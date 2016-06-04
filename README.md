@@ -55,6 +55,7 @@
 # <a name="notice"></a>注意
 
 * 收拢的文件夹内的文件不会被匹配到(Do not match any files or directories which in the collapse directory)
+* 一个文件夹本身没有被匹配只因为其包含了被匹配的文件或者文件夹而显示时，收拢该文件夹将会导致该文件夹在匹配结果列表上消失。(If you collapse a directory which include matched file or directory and this directory do not match any expression, then this directory will not display in the result list)
 
 # TODO
 
