@@ -9,6 +9,14 @@
 * enjoy it ☺️
 * [NOTICE](#notice)
 
+# 更新
+> Changelog
+
+* 0.0.2 (2016-08-22) :
+    * Add keyboard shortcut to toggle plugin.
+    * `ctrl-cmd-shift-f` in `darwin`.
+    * `ctrl-alt-shift-f` in `win32` and `linux`.
+
 ### 字符 : String
 
 * 匹配包含该字符串的文件夹与文件
