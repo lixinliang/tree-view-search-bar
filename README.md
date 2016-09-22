@@ -31,6 +31,8 @@
     * Add keyboard shortcut to toggle plugin.
     * `ctrl-cmd-shift-f` in `darwin`.
     * `ctrl-alt-shift-f` in `win32` and `linux`.
+* 0.0.3 (2016-09-22) :
+    * Focus after show.
 
 ## <a name="Usage"></a>Usage [[↑]](#Menu)
 > 使用方法
