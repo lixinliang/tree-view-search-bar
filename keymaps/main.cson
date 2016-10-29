@@ -8,7 +8,7 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
 '.platform-win32 .editor, .platform-linux .editor, .platform-win32 .tree-view, .platform-linux .tree-view':
-  'ctrl-alt-shift-f': 'search-bar:toggle'
+  'ctrl-alt-shift-f': 'search-bar:focus'
 
 '.platform-darwin .editor, .tree-view':
-  'ctrl-cmd-shift-f': 'search-bar:toggle'
+  'ctrl-cmd-shift-f': 'search-bar:focus'
