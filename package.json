@@ -9,8 +9,11 @@
     "filter",
     "search"
   ],
-  "activationCommands": {
-    "atom-workspace": "search-bar:toggle"
+  "configSchema": {
+    "autoToggle": {
+      "type": "boolean",
+      "default": true
+    }
   },
   "repository": "https://github.com/lixinliang/tree-view-search-bar",
   "license": "MIT",
@@ -23,7 +26,5 @@
     "jquery": "^2.2.4",
     "minimatch": "^3.0.0"
   },
-  "devDependencies": {
-    "atom-package-reloader": "0.0.2"
-  }
+  "devDependencies": {}
 }

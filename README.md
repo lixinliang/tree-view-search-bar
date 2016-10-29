@@ -4,6 +4,7 @@
 # <a name="Menu"></a>Menu
 > 目录
 
+* [Intro](#Intro)
 * [Install (安装)](#Install)
 * [Changelog (更新日志)](#Changelog)
 * [Usage (使用方法)](#Usage)
@@ -12,6 +13,15 @@
     * [Path : 路径](#Path)
     * [Combo : 组合](#Combo)
 * [Notice (注意事项)](#Notice)
+
+## <a name="Intro"></a>Intro [[↑]](#Menu)
+
+Actually, `tree-view-search-bar` is more like a file-filter tool.
+
+`tree-view-filter` is a good plugin to filter files, but there are something different between `tree-view-filter` and `tree-view-search-bar`.
+
+* `tree-view-search-bar` could filter directories.
+* `tree-view-search-bar` could filter files without extension name.
 
 ## <a name="Install"></a>Install [[↑]](#Menu)
 > 安装
@@ -33,6 +43,13 @@
     * `ctrl-alt-shift-f` in `win32` and `linux`.
 * 0.0.3 (2016-09-22) :
     * Focus after show.
+* 0.1.1 (2016-10-30) :
+    * Auto toggle when open a new window.
+        * require tree-view still.
+    * "ctrl-alt-shift-f/ctrl-cmd-shift-f" shortcut feature now is "focus" instead "toggle".
+        * Now you can use this shortcut and "esc", switch the search-bar and your workspace quickly.
+    * When you focus search-bar and search-bar is not exist, search-bar will auto show.
+
 
 ## <a name="Usage"></a>Usage [[↑]](#Menu)
 > 使用方法
