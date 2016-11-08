@@ -1,3 +1,7 @@
+[![apm](https://img.shields.io/apm/l/tree-view-search-bar.svg?style=flat-square)](https://atom.io/packages/tree-view-search-bar)
+[![apm](https://img.shields.io/apm/v/tree-view-search-bar.svg?style=flat-square)](https://atom.io/packages/tree-view-search-bar)
+[![apm](https://img.shields.io/apm/dm/tree-view-search-bar.svg?style=flat-square)](https://atom.io/packages/tree-view-search-bar)
+
 # tree-view-search-bar
 > 🔍A file/directory filter plugin.
 
