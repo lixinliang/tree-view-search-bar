@@ -16,3 +16,6 @@
 * "ctrl-alt-shift-f/ctrl-cmd-shift-f" shortcut feature now is "focus" instead "toggle".
     * Now you can use this shortcut and "esc", switch the search-bar and your workspace quickly.
 * When you focus search-bar and search-bar is not exist, search-bar will auto show.
+
+## 0.1.2 - Rename
+* Rename initialize to initializePackage.
