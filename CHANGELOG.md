@@ -19,3 +19,6 @@
 
 ## 0.1.2 - Rename
 * Rename initialize to initializePackage.
+
+## 0.1.3 - Bug fixed
+* Fixed `Cannot read property 'editorElement' of undefined` in `view.js`.
