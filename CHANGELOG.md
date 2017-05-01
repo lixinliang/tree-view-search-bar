@@ -22,3 +22,5 @@
 
 ## 0.1.3 - Bug fixed
 * Fixed `Cannot read property 'editorElement' of undefined` in `view.js`.
+
+## 1.0.0 - Friendly UI and upgraded UX
