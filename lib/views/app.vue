@@ -6,7 +6,7 @@ import mousetrap from 'mousetrap';
 export default {
     data () {
         return {
-            test : '123',
+            title : 'app',
         };
     },
     created () {
@@ -18,12 +18,17 @@ export default {
     destroyed () {
         console.log('destroyed');
     },
+    methods : {
+        test () {
+            this.title = 'test2';
+        },
+    },
 }
 </script>
 
 <template>
     <div class="app">
-        <div class="app-title">app</div>
+        <div class="app-title" @click="test">{{ title }}</div>
     </div>
 </template>
 
@@ -46,5 +51,6 @@ export default {
     .app-title {
         padding: 0 10px;
         float: left;
+        cursor: pointer;
     }
 </style>
