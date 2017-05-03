@@ -1,11 +1,13 @@
 'use babel';
 
-import TreeViewSearchBar from '../lib/tree-view-search-bar';
+import DEV from '../lib/module/dev';
+// import TreeViewSearchBar from '../lib/main';
 
-// describe("TreeViewSearchBar", function() {
-// });
-
-
+describe('TreeViewSearchBar', () => {
+    it('Publish', () => {
+        expect(DEV).toBe(false);
+    });
+});
 
 // import MyTestPlugin from '../lib/my-test-plugin';
 //
