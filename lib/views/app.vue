@@ -1,12 +1,17 @@
 <script>
 import mousetrap from 'mousetrap';
+import inputTag from 'vue-input-tag';
 
 // console.log(mousetrap);
 
 export default {
+    components : {
+        inputTag,
+    },
     data () {
         return {
             title : 'app',
+            tags : [],
         };
     },
     created () {
@@ -20,7 +25,10 @@ export default {
     },
     methods : {
         test () {
-            this.title = 'test2';
+            this.title = 'test3';
+        },
+        onChange () {
+            console.log('onChange');
         },
     },
 }
@@ -28,6 +36,7 @@ export default {
 
 <template>
     <div class="app">
+        <input-tag :on-change="onChange" :tags="tags" :placeholder="'type something'"></input-tag>
         <div class="app-title" @click="test">{{ title }}</div>
     </div>
 </template>
