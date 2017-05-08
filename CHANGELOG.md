@@ -22,3 +22,6 @@
 
 ## 0.1.3 - Bug fixed
 * Fixed `Cannot read property 'editorElement' of undefined` in `view.js`.
+
+## 0.1.4 - Bug fixed
+* Fixed `this.treeView.before is not a function` in Atom 1.16.0.
