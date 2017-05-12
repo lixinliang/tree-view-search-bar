@@ -1,8 +1,8 @@
 <script>
+import path from 'path';
 import mousetrap from 'mousetrap';
 import inputTag from 'vue-input-tag';
-
-// console.log(mousetrap);
+import { DEV } from '../module/constant';
 
 export default {
     components : {
@@ -22,7 +22,12 @@ export default {
         });
     },
     destroyed () {
-        console.log('destroyed');
+        if (DEV) {
+            let styles = document.querySelectorAll(`atom-styles style[source-path="${ __filename }"]`);
+            [].forEach.call(styles, ( style ) => {
+                style.remove();
+            });
+        }
     },
     methods : {
         onChange () {
@@ -38,7 +43,7 @@ export default {
             class="tags"
             :tags="tags"
             :on-change="onChange"
-            :placeholder="placeholder",
+            :placeholder="placeholder"
         ></input-tag>
     </div>
 </template>
@@ -49,11 +54,15 @@ export default {
         top: 0;
         left: 0;
         width: 100%;
-        height: 36px;
+        height: 3em;
         border-bottom: 1px solid #ccc;
         z-index: 9;
     }
     .tags {
+        border: none;
+        background-color: none;
+        input {
 
+        }
     }
 </style>
