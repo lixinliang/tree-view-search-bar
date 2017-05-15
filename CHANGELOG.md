@@ -29,4 +29,8 @@
 ## 0.1.7 - Bug fixed
 * Fixed `_this3.treeView.selectedEntry is not a function` in Atom 1.16.0.
 
+## 0.1.8 - Bug fixed
+* Fixed `treeView.find is not a function` in Atom 1.16.0.
+* Fixed `_this3.treeView.deselect is not a function` in Atom 1.16.0.
+
 ## 1.0.0 - Friendly UI and upgraded UX
