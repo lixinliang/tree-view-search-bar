@@ -10,5 +10,5 @@
 
 #### Now, dev for the `v1.0.0`
 
-#### The last stable version `v0.1.7` here:
-* https://github.com/lixinliang/tree-view-search-bar/tree/v0.1.7
+#### The last stable version `v0.1.8` here:
+* https://github.com/lixinliang/tree-view-search-bar/tree/v0.1.8
