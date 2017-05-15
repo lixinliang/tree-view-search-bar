@@ -10,6 +10,7 @@
     "search"
   ],
   "scripts": {
+    "jshint": "jshint ./lib/main.js",
     "test": "atom --test --timeout 60 ./spec/tree-view-search-bar.js"
   },
   "repository": "https://github.com/lixinliang/tree-view-search-bar",
@@ -26,9 +27,11 @@
     "event-kit": "^2.2.0",
     "javascript-state-machine": "^2.4.0",
     "mousetrap": "^1.6.1",
-    "sass.js": "^0.10.4",
+    "node-sass": "^4.5.2",
     "use-vue": "^1.0.1",
     "vue-input-tag": "0.0.11"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jshint": "^2.9.4"
+  }
 }
