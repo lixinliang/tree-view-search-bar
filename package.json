@@ -10,7 +10,6 @@
     "search"
   ],
   "scripts": {
-    "postinstall": "node postinstall.js",
     "jshint": "jshint ./lib/*",
     "test": "atom --test --timeout 60 ./spec/tree-view-search-bar.js"
   },
