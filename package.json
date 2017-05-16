@@ -10,7 +10,8 @@
     "search"
   ],
   "scripts": {
-    "jshint": "jshint ./lib/main.js",
+    "postinstall": "node postinstall.js",
+    "jshint": "jshint ./lib/*",
     "test": "atom --test --timeout 60 ./spec/tree-view-search-bar.js"
   },
   "repository": "https://github.com/lixinliang/tree-view-search-bar",
@@ -28,7 +29,7 @@
     "javascript-state-machine": "^2.4.0",
     "mousetrap": "^1.6.1",
     "node-sass": "^4.5.2",
-    "use-vue": "^1.0.1",
+    "use-vue": "^1.0.3",
     "vue-input-tag": "0.0.11"
   },
   "devDependencies": {
