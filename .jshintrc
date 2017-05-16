@@ -1,6 +1,7 @@
 {
     "esversion": 6,
     "node": true,
+    "-W058": true,
     "globals": {
         "atom": true
     }
