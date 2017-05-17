@@ -2,46 +2,79 @@
 import path from 'path';
 import mousetrap from 'mousetrap';
 import inputTag from 'vue-input-tag';
-import { DEV } from '../module/constant';
+import { requirePackages } from 'atom-utils';
+import {
+    DEV,
+    NAME,
+} from '../module/constant';
+
+let slice = ( elements ) => [].slice.call(elements);
 
 export default {
     components : {
         inputTag,
     },
+    computed : {
+        height : {
+            get () {},
+            async set ( value ) {
+                let [{ treeView }] = await requirePackages('tree-view');
+                treeView.element.style['padding-top'] = this.$refs.app.style['height'] = `${ value }px`;
+            },
+        },
+    },
     data () {
         return {
-            title : 'app',
+            NAME,
             tags : [],
-            placeholder : 'type something',
+            placeholder : 'type sth',
+            transitionend : () => {},
         };
     },
     created () {
-        console.log('created');
         this.$on('focus', () => {
             console.log('focus');
         });
+        this.$on('show', () => {
+            this.transitionend = () => {};
+            this.height = parseInt(getComputedStyle(this.$refs.tags.$el)['height']);
+        });
+        this.$on('hide', ( resolve ) => {
+            this.transitionend = () => {
+                this.$destroy();
+                resolve();
+            };
+            this.height = 0;
+        });
     },
-    destroyed () {
-        if (DEV) {
-            let styles = document.querySelectorAll(`atom-styles style[source-path="${ __filename }"]`);
-            [].forEach.call(styles, ( style ) => {
-                style.remove();
-            });
-        }
+    mounted () {
+        process.nextTick(() => {
+            this.$emit('show');
+        });
     },
     methods : {
         onChange () {
             console.log('onChange');
         },
     },
+    destroyed () {
+        if (DEV) {
+            let styles = slice(document.querySelectorAll(`atom-styles style[source-path="${ __filename }"]`));
+            for (let style of styles) {
+                style.remove();
+            }
+        }
+        this.$el.remove();
+    },
 }
 </script>
 
 <template>
-    <div class="app">
+    <div class="app" :name="NAME.kebab" ref="app">
         <input-tag
-            class="tags"
+            ref="tags"
             :tags="tags"
+            class="tags"
             :on-change="onChange"
             :placeholder="placeholder"
         ></input-tag>
@@ -53,16 +86,20 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
+        height: 0;
         width: 100%;
-        height: 3em;
-        border-bottom: 1px solid #ccc;
-        z-index: 9;
+        padding: 0 .4em;
+        overflow: hidden;
+        box-sizing: border-box;
     }
     .tags {
         border: none;
-        background-color: none;
-        input {
+        background-color: transparent;
+    }
+</style>
 
-        }
+<style lang="less">
+    .app + .tree-view-resizer {
+        transition: padding .4s;
     }
 </style>
