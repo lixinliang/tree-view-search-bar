@@ -9,6 +9,7 @@ import {
 } from '../module/constant';
 
 let slice = ( elements ) => [].slice.call(elements);
+let sleep = ( delay ) => new Promise(( resolve ) => setTimeout(resolve, delay));
 
 export default {
     components : {
@@ -19,7 +20,7 @@ export default {
             get () {},
             async set ( value ) {
                 let [{ treeView }] = await requirePackages('tree-view');
-                treeView.element.style['padding-top'] = this.$refs.app.style['height'] = `${ value }px`;
+                treeView.element.style['padding-top'] = `${ value }px`;
             },
         },
     },
@@ -28,28 +29,26 @@ export default {
             NAME,
             tags : [],
             placeholder : 'type sth',
-            transitionend : () => {},
         };
     },
     created () {
         this.$on('focus', () => {
             console.log('focus');
         });
-        this.$on('show', () => {
-            this.transitionend = () => {};
+        this.$on('show', ( resolve ) => {
             this.height = parseInt(getComputedStyle(this.$refs.tags.$el)['height']);
+            resolve();
         });
-        this.$on('hide', ( resolve ) => {
-            this.transitionend = () => {
-                this.$destroy();
-                resolve();
-            };
+        this.$on('hide', async ( resolve ) => {
             this.height = 0;
+            await sleep(600);
+            this.$destroy();
+            resolve();
         });
     },
     mounted () {
         process.nextTick(() => {
-            this.$emit('show');
+            this.$emit('show', () => {});
         });
     },
     methods : {
@@ -70,11 +69,11 @@ export default {
 </script>
 
 <template>
-    <div class="app" :name="NAME.kebab" ref="app">
+    <div class="app" :name="NAME.kebab">
         <input-tag
             ref="tags"
-            :tags="tags"
             class="tags"
+            :tags="tags"
             :on-change="onChange"
             :placeholder="placeholder"
         ></input-tag>
@@ -86,10 +85,8 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        height: 0;
         width: 100%;
         padding: 0 .4em;
-        overflow: hidden;
         box-sizing: border-box;
     }
     .tags {
