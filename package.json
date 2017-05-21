@@ -26,6 +26,7 @@
     "atom-utils": "^0.9.2",
     "event-kit": "^2.2.0",
     "javascript-state-machine": "^2.4.0",
+    "minimatch": "^3.0.4",
     "mousetrap": "^1.6.1",
     "node-sass": "^4.5.2",
     "use-vue": "^1.0.3",
