@@ -24,6 +24,7 @@ export default {
         },
         style () {
             return this.active ? {
+                // HACK: just right large than the treeView panel
                 'z-index' : 3,
             } : {};
         },
@@ -51,13 +52,14 @@ export default {
         if (this.moduleId) {
             this.$treeView.element.setAttribute(this.moduleId, '');
         }
+        let input = this.$refs.tags.$el.querySelector('input');
         // Bind
         this.$on('focus', () => {
-            console.log('focus');
+            input.focus();
         });
         this.$on('show', async ( resolve = () => {} ) => {
             this.updateView();
-            await this.transitionend();
+            await sleep(400);
             this.active = true;
             resolve();
         });
@@ -65,7 +67,7 @@ export default {
             this.active = false;
             await nextTick();
             this.height = 0;
-            await this.transitionend();
+            await sleep(400);
             this.$destroy();
             resolve();
         });
@@ -94,19 +96,11 @@ export default {
     },
     methods : {
         onChange () {
+            // TODO: filter feature
             console.log(this.tags);
         },
         updateView () {
             this.height = this.$el.offsetHeight;
-        },
-        transitionend () {
-            return new Promise(( resolve ) => {
-                let handler = () => {
-                    this.$treeView.element.removeEventListener('transitionend', handler, false);
-                    resolve();
-                };
-                this.$treeView.element.addEventListener('transitionend', handler, false);
-            });
         },
     },
 }
@@ -115,6 +109,7 @@ export default {
 <template>
     <div class="app" :name="NAME.kebab" :style="style">
         <input-tag
+            ref="tags"
             class="tags"
             :tags="tags"
             :on-change="onChange"
@@ -128,10 +123,12 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
+        right: 0;
+        bottom: auto;
         width: 100%;
         padding: 0 .4em;
         box-sizing: border-box;
-        & + .tree-view-resizer {
+        & + .tree-view {
             transition: padding .4s;
         }
     }
