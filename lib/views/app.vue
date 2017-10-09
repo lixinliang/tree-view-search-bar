@@ -80,6 +80,7 @@ export default {
         observer.observe(this.$treeView.element, { childList : true, subtree : true });
         // Show
         await nextTick();
+        this.filter();
         this.$emit('show');
     },
     updated () {
@@ -121,17 +122,15 @@ export default {
                 $treeView,
             });
 
-            console.log(hidden);
-            console.log(visible);
+            for (let item of hidden) {
+                item.setAttribute(this.moduleId, '');
+                item.setAttribute(attributeName, 'none');
+            }
 
-            // for (let item of hidden) {
-            //     item.setAttribute(this.moduleId, '');
-            //     item.setAttribute(attributeName, 'none');
-            // }
-            //
-            // for (let item of visible) {
-            //     item.removeAttribute(attributeName);
-            // }
+            for (let item of visible) {
+                item.setAttribute(this.moduleId, '');
+                item.removeAttribute(attributeName);
+            }
         },
         change () {
             this.filter();
@@ -169,8 +168,12 @@ export default {
         background-color: rgba(255,255,255,.2);
         & + .tree-view {
             transition: padding .4s;
-            [tree-view-search-bar-display="none"] {
-                display: block;
+            .list-item {
+                transition: height .4s;
+                &[tree-view-search-bar-display="none"] {
+                    height: 0;
+                    overflow: hidden;
+                }
             }
         }
     }
