@@ -78,6 +78,9 @@ export default {
             this.filter();
         });
         observer.observe(this.$treeView.element, { childList : true, subtree : true });
+        // Overwrite
+        // TODO: rewrite scrollToEntry scrollToBottom etc. methods of treeView when searching sth.
+        const { prototype } = this.$treeView.constructor;
         // Show
         await nextTick();
         this.filter();
@@ -122,14 +125,24 @@ export default {
                 $treeView,
             });
 
+            const headers = [];
             for (let item of hidden) {
                 item.setAttribute(this.moduleId, '');
                 item.setAttribute(attributeName, 'none');
+                if (item.matches('.header')) {
+                    headers.push(item);
+                }
             }
 
             for (let item of visible) {
                 item.setAttribute(this.moduleId, '');
                 item.removeAttribute(attributeName);
+            }
+
+            for (let item of headers.reverse()) {
+                if (item.nextElementSibling.querySelector(`[${ attributeName }]`)) {
+                    item.removeAttribute(attributeName);
+                }
             }
         },
         change () {
@@ -169,9 +182,13 @@ export default {
         & + .tree-view {
             transition: padding .4s;
             .list-item {
-                transition: height .4s;
+                transition: height .4s, margin .4s, padding .4s;
                 &[tree-view-search-bar-display="none"] {
                     height: 0;
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    margin-top: 0;
+                    margin-bottom: 0;
                     overflow: hidden;
                 }
             }
