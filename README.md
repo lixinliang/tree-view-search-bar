@@ -7,7 +7,6 @@
 # tree-view-search-bar
 > 🔍A file/directory filter plugin.
 
-
 #### Now, dev for the `v1.0.0`
 
 #### The last stable version `v0.1.8` here:
