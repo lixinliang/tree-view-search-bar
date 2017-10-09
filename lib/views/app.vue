@@ -2,12 +2,14 @@
 import path from 'path';
 import mousetrap from 'mousetrap';
 import inputTag from 'vue-input-tag';
+import filter from '../module/filter';
 import { requirePackages } from 'atom-utils';
 import {
     DEV,
     NAME,
 } from '../module/constant';
 
+let observer = null;
 let sleep = ( delay ) => new Promise(( resolve ) => setTimeout(resolve, delay));
 let nextTick = () => new Promise(( resolve ) => process.nextTick(resolve));
 
@@ -71,6 +73,11 @@ export default {
             this.$destroy();
             resolve();
         });
+        // Use Mutation to Observer Dom update
+        observer = new MutationObserver(( mutations ) => {
+            this.filter();
+        });
+        observer.observe(this.$treeView.element, { childList : true, subtree : true });
         // Show
         await nextTick();
         this.$emit('show');
@@ -85,19 +92,49 @@ export default {
         }
         // Unbind
         this.$off();
+        observer.disconnect();
+        observer = null;
         // Destroy
         this.$el.remove();
-        if (DEV) {
-            let styles = Array.from(document.querySelectorAll(`atom-styles style[source-path="${ __filename }"]`));
-            for (let style of styles) {
-                style.remove();
-            }
-        }
+        // HACK: it seems can not be inject twice in atom 1.21 after remove
+        // if (DEV) {
+        //     let styles = Array.from(document.querySelectorAll(`atom-styles style[source-path="${ __filename }"]`));
+        //     for (let style of styles) {
+        //         style.remove();
+        //     }
+        // }
     },
     methods : {
-        onChange () {
-            // TODO: filter feature
-            console.log(this.tags);
+        filter () {
+            const attributeName = 'tree-view-search-bar-display';
+
+            const {
+                tags,
+                $treeView,
+            } = this;
+
+            const {
+                hidden,
+                visible,
+            } = filter({
+                tags,
+                $treeView,
+            });
+
+            console.log(hidden);
+            console.log(visible);
+
+            // for (let item of hidden) {
+            //     item.setAttribute(this.moduleId, '');
+            //     item.setAttribute(attributeName, 'none');
+            // }
+            //
+            // for (let item of visible) {
+            //     item.removeAttribute(attributeName);
+            // }
+        },
+        change () {
+            this.filter();
         },
         updateView () {
             this.height = this.$el.offsetHeight;
@@ -112,7 +149,7 @@ export default {
             ref="tags"
             class="tags"
             :tags="tags"
-            :on-change="onChange"
+            :on-change="change"
             :placeholder="placeholder"
         ></input-tag>
     </div>
@@ -128,8 +165,13 @@ export default {
         width: 100%;
         padding: 0 .4em;
         box-sizing: border-box;
+        backdrop-filter: blur(2px);
+        background-color: rgba(255,255,255,.2);
         & + .tree-view {
             transition: padding .4s;
+            [tree-view-search-bar-display="none"] {
+                display: block;
+            }
         }
     }
     .tags {
