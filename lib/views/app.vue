@@ -125,23 +125,51 @@ export default {
                 $treeView,
             });
 
-            const headers = [];
             for (let item of hidden) {
-                item.setAttribute(this.moduleId, '');
-                item.setAttribute(attributeName, 'none');
-                if (item.matches('.header')) {
-                    headers.push(item);
+                let target;
+                if (item.matches('.project-root > .list-tree .header')) {
+                    target = item.parentElement;
+                } else {
+                    target = item;
                 }
+                target.setAttribute(this.moduleId, '');
+                target.setAttribute(attributeName, 'none');
             }
 
             for (let item of visible) {
-                item.setAttribute(this.moduleId, '');
-                item.removeAttribute(attributeName);
+                let target;
+                if (item.matches('.project-root > .list-tree .header')) {
+                    target = item.parentElement;
+                } else {
+                    target = item;
+                }
+                target.setAttribute(this.moduleId, '');
+                target.removeAttribute(attributeName);
             }
 
-            for (let item of headers.reverse()) {
-                if (item.nextElementSibling.querySelector(`[${ attributeName }]`)) {
-                    item.removeAttribute(attributeName);
+            if (hidden.length) {
+                for (let item of visible.reverse()) {
+                    let target;
+                    if (item.matches('.project-root > .list-tree .header')) {
+                        target = item.parentElement;
+                    } else {
+                        target = item;
+                    }
+                    try {
+                        let current = target;
+                        while (current) {
+                            current = (() => {
+                                let next = current.parentElement.parentElement;
+                                if (next.matches('.project-root > .list-tree .entry') && next.hasAttribute(attributeName)) {
+                                    next.removeAttribute(attributeName);
+                                    return next;
+                                }
+                                return false;
+                            })();
+                        }
+                    } catch (e) {
+
+                    }
                 }
             }
         },
@@ -181,15 +209,16 @@ export default {
         background-color: rgba(255,255,255,.2);
         & + .tree-view {
             transition: padding .4s;
-            .list-item {
+            .entry {
                 transition: height .4s, margin .4s, padding .4s;
                 &[tree-view-search-bar-display="none"] {
-                    height: 0;
-                    padding-top: 0;
-                    padding-bottom: 0;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                    overflow: hidden;
+                    display: none;
+                    // height: 0;
+                    // padding-top: 0;
+                    // padding-bottom: 0;
+                    // margin-top: 0;
+                    // margin-bottom: 0;
+                    // overflow: hidden;
                 }
             }
         }
