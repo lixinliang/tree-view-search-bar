@@ -1,7 +1,7 @@
 {
   "name": "tree-view-search-bar",
   "main": "./lib/main",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "🔍A file/directory filter plugin.",
   "keywords": [
     "tree-view",
